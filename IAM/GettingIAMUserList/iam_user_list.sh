@@ -27,7 +27,7 @@ for item in "${iam_user_arr[@]}"; do
     if [[ "$user_group" == '' ]] then user_group="NA"; fi
 
     #getting last_accessed_date with any services for the user
-    user_arn=arn:aws:iam::<accountID>:user/"$user"
+    user_arn=arn:aws:iam::<AccountID>:user/"$user"
     user_job_id="$(aws iam generate-service-last-accessed-details --arn "$user_arn" | tr -d '"''{''}'':''\n'' ' |cut -c 6-)"
     sleep 10 #waiting for 10 sec for job_id creation
     last_accessed_date="$(aws iam get-service-last-accessed-details --job-id "$user_job_id" --query 'ServicesLastAccessed[*].LastAuthenticated'  | tr -d '[''"'','' '''']' | sort -rn | head -1)"
