@@ -1,5 +1,5 @@
 **Goal**
-- To get the list of all IAM users, along with poicies, group and last access date in the csv file
+- To get the list of all IAM users, along with poicies, group and last access date in the csv file using shell script
 
 **aws shell command used**
 1. list-users -> to get list of all users
